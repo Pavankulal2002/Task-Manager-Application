@@ -155,59 +155,59 @@
   padding: 20px;
   margin-bottom: 20px;
 }
-
+ 
 .todo table {
   width: 100%;
 }
-
+ 
 .todo td {
   padding: 10px;
 }
-
+ 
 .todo-content {
   margin-bottom: 10px;
 }
-
+ 
 .todo-options {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
-
+ 
 .delete-btn {
   background: none;
   border: none;
   cursor: pointer;
   margin:5px;
 }
-
+ 
 .Update-btn {
   background: none;
   border: none;
   cursor: pointer;
   margin:5px;
 }
-
+ 
 .status-dropdown {
   padding: 5px;
 }
-
+ 
 /* Responsive Styles */
-
+ 
 @media only screen and (max-width: 400px) {
   .todo {
     padding: 10px;
   }
-
+ 
   .todo td {
     padding: 5px;
   }
-
+ 
   .todo-options {
     align-items: flex-end;
   }
 }
-
+ 
 button {
   background-color: #007bff;
   color: #fff;
@@ -225,7 +225,7 @@ button {
   }
 }
  
-
+ 
  
  
  

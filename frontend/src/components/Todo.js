@@ -56,7 +56,7 @@ const Todo = ({ todo, userEmail, fetchData }) => {
                 <button className="delete-btn" onClick={handleTaskDelete}>
                 <FontAwesomeIcon icon={faTrash}/> {/* Use the Trash icon from 'react-bootstrap-icons' */}
                 </button>
-                <div>
+                
                   <select
                     className="status-dropdown"
                     defaultValue={todo.Status}
@@ -66,6 +66,7 @@ const Todo = ({ todo, userEmail, fetchData }) => {
                     <option value="InProgress">In Progress</option>
                     <option value="Done">Done</option>
                   </select>
+                  <div>
                 </div>
               </div>
             </td>
