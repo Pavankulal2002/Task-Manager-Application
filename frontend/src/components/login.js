@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import { auth } from './firebase'
 import { toast } from 'react-toastify'
 import SignInwithGoogle from './signInWIthGoogle'
-import axios from 'axios'
 import '../index.css'
 
 function Login () {

@@ -62,7 +62,7 @@ function Profile() {
   function handleFilterChange(e) {
     const newFilter = String(e.target.value);
     console.log(e.target.value);
-    if (newFilter == 'All') {
+    if (newFilter === 'All') {
       setTasks(allTasks);
     } else {
       const newTasks = allTasks;
@@ -79,7 +79,7 @@ function Profile() {
           <div className="navbar-brand">Task Manager</div>
           <div className="navbar-profile" onClick={handleClickPhoto}>
             <img
-              src={userDetails?.photo}
+              src={userDetails?.photo|| require("../profile.png")}
               alt="Profile"
               width="40px"
               style={{ borderRadius: "50%" }}

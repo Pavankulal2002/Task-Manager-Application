@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { Trash } from 'react-bootstrap-icons';
 import UpdateTodoForm from './UpdateTodoForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';

@@ -33,13 +33,13 @@ const UpdateTodoForm = ({ task, userEmail, fetchData }) => {
     // Prepare the updated task object
     const updatedTask = {}
 
-    if (oldTitle != taskTitle) {
+    if (oldTitle !== taskTitle) {
       updatedTask["Title"] = taskTitle;
     }
-    if (oldDescription != taskDescription) {
+    if (oldDescription !== taskDescription) {
       updatedTask["Description"] = taskDescription;
     }
-    if (oldDuedate != taskDuedate) {
+    if (oldDuedate !== taskDuedate) {
       updatedTask["Duedate"] = taskDuedate;
     }
 
