@@ -25,9 +25,8 @@ const CreateTodoForm = ({ user, fetchData }) => {
     // Handle form submission logic here
     const taskStatus = "Todo";
 
-    // const csrfRes = await axios.get('http://localhost:8000/task/getCSRF');
-    // console.log(csrfRes.data.data.csrfToken);
-    // const csrfTokenVar = csrfRes.data.data.csrfToken;
+    const csrfResponse = await axios.get('http://localhost:8000/task/getCSRF');
+    const csrfTokenVar = csrfResponse.data["data"].csrfToken;
 
     const userEmail = user?.email;
     console.log(userEmail);
@@ -42,7 +41,8 @@ const CreateTodoForm = ({ user, fetchData }) => {
         Title: taskTitle,
         Description: taskDescription,
         Status: taskStatus,
-        Duedate: taskDuedate
+        Duedate: taskDuedate,
+        _csrf: csrfTokenVar
       })
     })
     .then((res)=>{
@@ -55,8 +55,6 @@ const CreateTodoForm = ({ user, fetchData }) => {
     closeModal();
   };
 
-
-  let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function openModal() {

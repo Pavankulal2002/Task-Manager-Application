@@ -13,6 +13,8 @@ const redisClient = redis.createClient();
 redisClient.on('error', err => console.log('Redis Client Error', err));
 redisClient.connect();
 
+var csrfGlobal;
+
 // Validating user session
 function getSession(request){
     return request.session.userEmail;
@@ -74,7 +76,13 @@ async function postTasks(request, response){
             message: "User not logged in"
         })
     }
-
+    if(csrfGlobal!=request.body._csrf){
+        console.log("CSRF validation failed");
+        return response.status(400).json({
+            status: "Failed",
+            message: "CSRF validation failed"
+        })
+    }
     const task = request.body;
     delete task._csrf;
     task.Duedate = new Date(task.Duedate);
@@ -191,11 +199,12 @@ async function deleteTasks(request, response){
 // Generates CSRF token for validation
 async function getCSRFToken(request, response){
     try{
+        csrfGlobal = request.csrfToken();
         return response.status(200).json({
             status: "Success",
             message: "Data deletion successful",
             data: {
-                csrfToken: request.csrfToken()
+                csrfToken: csrfGlobal
             }
         })
     }catch(err){

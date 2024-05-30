@@ -41,8 +41,6 @@ function Profile() {
     });
   };
 
-  // fetchUserData();
-
   useEffect(() => {
     fetchUserData();
   }, []);

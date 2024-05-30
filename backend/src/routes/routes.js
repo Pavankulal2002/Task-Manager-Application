@@ -19,15 +19,13 @@ const csrfProtect = csrf({ cookie: true});
 
 // Routes for CRUD operations
 taskRoute.get('/get/:Email', getTasks);
-// taskRoute.post('/post/:Email', csrfProtect, postTasks);
 taskRoute.post('/post/:Email', postTasks);
 taskRoute.patch('/patch/:Email', patchTasks);
 taskRoute.put('/put/:Email', putTasks);
 taskRoute.delete('/delete/:Email', deleteTasks);
 
 // Route for csrf token generation
-// taskRoute.get('/getCSRF', csrfProtect, getCSRFToken);
-taskRoute.get('/getCSRF', getCSRFToken);
+taskRoute.get('/getCSRF', csrfProtect, getCSRFToken);
 
 // Routes for login and logout
 taskRoute.get('/login/:Email', userLogin);
