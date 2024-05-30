@@ -38,7 +38,7 @@ function App() {
             <Route path="/login" element={<div className="auth-wrapper auth-inner"><Login /></div>} />
             <Route path="/register" element={<div className="auth-wrapper auth-inner"><SignUp /></div>} />
             <Route path="/forgotPassword" element={<div className="auth-wrapper auth-inner"><ForgotPassword /></div>} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile" element={user?<Profile />:<div className="auth-wrapper auth-inner"><Login/></div>} />
           </Routes>
           <ToastContainer />
 

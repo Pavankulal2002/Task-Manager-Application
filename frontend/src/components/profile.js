@@ -146,9 +146,9 @@ function Profile() {
       </div>
       <div className="app">
         <div className="todos">
-        {tasks? tasks.map((todo) => <Todo key={todo._id} todo={todo} userEmail={userDetails?.email} fetchData = { fetchUserData }/>) : <div className="loader">
+        {tasks? tasks.map((todo) => <Todo key={todo._id} todo={todo} userEmail={userDetails?.email} fetchData = { fetchUserData }/>) : (<div className="loader">
            <ClipLoader color="#36d7b7" />
-        </div>} 
+        </div>)} 
         </div>
       </div>
     </div>
