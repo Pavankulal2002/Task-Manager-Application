@@ -21,7 +21,7 @@ const CreateTodoForm = ({ user, fetchData }) => {
   const [taskDuedate, setDuedate] = useState('')
 
   // Function to handle form submission
-  const handleFormSubmit = async e => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault()
     // Handle form submission logic here
     const taskStatus = 'Todo'
@@ -96,6 +96,7 @@ const CreateTodoForm = ({ user, fetchData }) => {
             name='Todo-title'
             id='Todo-title'
             onChange={e => setTitle(e.target.value)}
+            required
           />
           <label htmlFor='Todo-description'>Description : </label>
           <input
@@ -103,6 +104,7 @@ const CreateTodoForm = ({ user, fetchData }) => {
             name='Todo-description'
             id='Todo-description'
             onChange={e => setDescription(e.target.value)}
+            required
           />
           <label htmlFor='due-date'>Due date : </label>
           <input
@@ -110,6 +112,7 @@ const CreateTodoForm = ({ user, fetchData }) => {
             name='due-date'
             id='due-date'
             onChange={e => setDuedate(e.target.value)}
+            required
           />
           <input type='submit' value='Submit' />
         </form>

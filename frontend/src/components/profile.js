@@ -6,15 +6,17 @@ import axios from "axios";
 import './styles.css';
 import Todo from './Todo';
 import CreateTodoForm from './CreateTodoForm';
+import Button from 'react-bootstrap/Button';
+
 
 function Profile() {
   const [userDetails, setUserDetails] = useState(null);
   const [displayDetails, setDisplayDetails] = useState(false);
   const [tasks, setTasks] = useState(null);
   const [allTasks, setAllTasks] = useState(null);
-  // var tasks;
+ 
 
-  const fetchUserData = async () => {
+  const fetchUserData = async (e) => {
     auth.onAuthStateChanged(async (user) => {
       // Check if user is logged in
       if (user) {
@@ -59,13 +61,14 @@ function Profile() {
     setDisplayDetails(!displayDetails);
   };
 
-  function handleFilterChange(e) {
+  async function handleFilterChange(e) {
     const newFilter = String(e.target.value);
     console.log(e.target.value);
     if (newFilter === 'All') {
       setTasks(allTasks);
     } else {
       const newTasks = allTasks;
+      console.log(newTasks);
       const filteredTasks = newTasks.filter(item => item.Status === newFilter);
       setTasks(filteredTasks);
       console.log(filteredTasks);
@@ -95,6 +98,8 @@ function Profile() {
                 <button className="btn btn-primary" onClick={handleLogout}>
                   Logout
                 </button>
+                
+                <Button variant="outline-dark"><span aria-hidden='true'>&times;</span></Button>
               </div>
             )}
           </div>
