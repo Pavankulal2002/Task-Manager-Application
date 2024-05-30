@@ -13,11 +13,12 @@ A simple task manager application built using Node.js and React.js. It uses Mong
 
 ## Prerequisits
 
-**Node.js**
+**Node.js** : You can find the full Node js installation guide [here](https://nodejs.org/en/learn/getting-started/how-to-install-nodejs)
 
-**MongoDB**
+**MongoDB** : You can find the full MongoDB installation guide [here](https://www.mongodb.com/docs/manual/installation/)
 
-**Redis**:
+**Redis** : You can find the full redis installation guide [here](https://redis.io/docs/latest/get-started/)
+
 
 
 ## Installation
@@ -40,8 +41,13 @@ npm run install
 ```bash
 sudo service redis-server start
 ```
+**Note** : Redis server should start at the default port (ie : 6379)
 
-You can find the full redis installation guide [here](https://redis.io/docs/latest/get-started/)
+Yoy can ping the server using following command
+
+'''bash
+redis-cli ping
+'''
 
 4. Run the application:
 
