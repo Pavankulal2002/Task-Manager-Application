@@ -53,7 +53,9 @@ function ForgotPassword() {
         </button>
       </div>
 
-
+      <p className="forgot-password text-right">
+        Know the password? <a href="/login">Login</a>
+      </p>
     </form>
   );
 }
