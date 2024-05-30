@@ -12,32 +12,42 @@ A simple task manager application built using Node.js and React.js. It uses Mong
 
 
 ## Prerequisits
+
 **Node.js**
+
 **MongoDB**
+
 **Redis**:
+
 
 ## Installation
 
-1. Clone the repository:
+1. Clone the repository and change directory:
 
+```bash
 git clone https://github.com/Pavankulal2002/Task-Manager-Application.git
-
+cd Task-Manager-Application
+```
 
 2. Install dependencies:
 
-### 'npm run install' 
-
+```bash
+npm run install
+``` 
 
 3. Start the Redis server (after installing Redis):
 
-### 'sudo service redis-server start'
+```bash
+sudo service redis-server start
+```
 
 You can find the full redis installation guide [here](https://redis.io/docs/latest/get-started/)
 
 4. Run the application:
 
-### 'npm run startapp'
-
+```bash
+npm run startapp
+```
 
 The website will be accessible at [http://localhost:3000/](http://localhost:3000/).
 
