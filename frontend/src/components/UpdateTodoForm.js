@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
@@ -20,9 +20,9 @@ Modal.setAppElement('#root')
 const UpdateTodoForm = ({ task, userEmail, fetchData }) => {
   const correctDate = new Date(task.Duedate).toISOString().split('T')[0];
 
-  const [taskTitle, setTitle] = useState(task.Title);
-  const [taskDescription, setDescription] = useState(task.Description);
-  const [taskDuedate, setDuedate] = useState(correctDate);
+  const[taskTitle, setTitle] = useState(task.Title);
+  const[taskDescription, setDescription] = useState(task.Description);
+  const[taskDuedate, setDuedate] = useState(correctDate);
 
   const oldTitle = task.Title;
   const oldDescription = task.Description;
@@ -33,18 +33,18 @@ const UpdateTodoForm = ({ task, userEmail, fetchData }) => {
     // Handle form submission logic here
     const updatedTask = {}
 
-    if (oldTitle != taskTitle) {
+    if(oldTitle!=taskTitle){
       updatedTask["Title"] = taskTitle;
     }
-    if (oldDescription != taskDescription) {
+    if(oldDescription!=taskDescription){
       updatedTask["Description"] = taskDescription;
     }
-    if (oldDuedate != taskDuedate) {
+    if(oldDuedate!=taskDuedate){
       updatedTask["Duedate"] = taskDuedate;
     }
 
     console.log(updatedTask);
-    const url = 'http://localhost:8000/task/patch/' + userEmail + '?id=' + task._id;
+    const url = 'http://localhost:8000/task/patch/'+userEmail+'?id='+task._id;
     const patchResponse = await axios.patch(url, updatedTask);
     console.log(patchResponse.status);
     // Close the form after submission
@@ -64,10 +64,10 @@ const UpdateTodoForm = ({ task, userEmail, fetchData }) => {
   }
 
   return (
-    <div >
+    <div className='todo-option-contents'>
       <button className="update-btn" onClick={openModal}>
-  <FontAwesomeIcon icon={faEdit} />
-</button>
+        <FontAwesomeIcon icon={faEdit} />
+      </button>
 
       <Modal
         isOpen={modalIsOpen}
@@ -86,13 +86,13 @@ const UpdateTodoForm = ({ task, userEmail, fetchData }) => {
         <h2 >Update Todo</h2>
 
         <div>Update your details here</div>
-        <form className='create-todo-form' onSubmit={(e) => handleFormSubmit(e)}>
+        <form className='create-todo-form' onSubmit={ (e)=>handleFormSubmit(e)}>
           <label htmlFor="Todo-title">Title :  </label>
-          <input type="text" name="Todo-title" id="Todo-title" value={taskTitle} onChange={(e) => setTitle(e.target.value)} />
+          <input type="text" name="Todo-title" id="Todo-title" value={taskTitle} onChange={(e)=>setTitle(e.target.value)}/>
           <label htmlFor="Todo-description">Description :  </label>
-          <input type="text" name="Todo-description" id="Todo-description" value={taskDescription} onChange={(e) => setDescription(e.target.value)} />
+          <input type="text" name="Todo-description" id="Todo-description" value={taskDescription} onChange={(e)=>setDescription(e.target.value)}/>
           <label htmlFor="due-date">Due date :  </label>
-          <input type="date" name="due-date" id="due-date" value={taskDuedate} onChange={(e) => setDuedate(e.target.value)} />
+          <input type="date" name="due-date" id="due-date" value={taskDuedate} onChange={(e)=>setDuedate(e.target.value)}/>
           <input type="submit" value="Submit" />
         </form>
       </Modal>
