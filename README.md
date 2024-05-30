@@ -25,17 +25,18 @@ git clone https://github.com/Pavankulal2002/Task-Manager-Application.git
 
 2. Install dependencies:
 
-npm run install 
+### 'npm run install' 
 
 
 3. Start the Redis server (after installing Redis):
 
-sudo service redis-server start
+### 'sudo service redis-server start'
 
 You can find the full redis installation guide [here](https://redis.io/docs/latest/get-started/)
+
 4. Run the application:
 
-npm run startapp
+### 'npm run startapp'
 
 
 The website will be accessible at [http://localhost:3000/](http://localhost:3000/).
