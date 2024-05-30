@@ -18,6 +18,7 @@ const Todo = ({ todo, userEmail, fetchData }) => {
         return {};
     }
   };
+  const correctDate = new Date(todo.Duedate).toISOString().split('T')[0];
 
   async function handleTaskDelete() {
     const url = `http://localhost:8000/task/delete/${userEmail}?id=${todo._id}`;
@@ -46,7 +47,7 @@ const Todo = ({ todo, userEmail, fetchData }) => {
               <div className="todo-content">
                 <h2>{todo.Title}</h2>
                 <p>{todo.Description}</p>
-                <p>{todo.Duedate}</p>
+                <p>{correctDate}</p>
               </div>
             </td>
             <td>
