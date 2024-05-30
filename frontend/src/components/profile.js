@@ -54,7 +54,7 @@ function Profile() {
       console.error("Error logging out:", error.message);
     }
   }
-  
+
   const handleClickPhoto = () => {
     setDisplayDetails(!displayDetails);
   };

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import Modal from 'react-modal';
-import axios from "axios"
-import ReactDOM from 'react-dom';
+import React, { useState } from 'react'
+import Modal from 'react-modal'
+import axios from 'axios'
+import ReactDOM from 'react-dom'
 
 const customStyles = {
   content: {
@@ -10,34 +10,35 @@ const customStyles = {
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-  },
-};
+    transform: 'translate(-50%, -50%)'
+  }
+}
 
 Modal.setAppElement('#root')
 const CreateTodoForm = ({ user, fetchData }) => {
   // State variables to store the input values
-  const [taskTitle, setTitle] = useState('');
-  const [taskDescription, setDescription] = useState('');
-  const [taskDuedate, setDuedate] = useState('');
+  const [taskTitle, setTitle] = useState('')
+  const [taskDescription, setDescription] = useState('')
+  const [taskDuedate, setDuedate] = useState('')
 
   // Function to handle form submission
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
+  const handleFormSubmit = async e => {
+    e.preventDefault()
     // Handle form submission logic here
-    const taskStatus = "Todo";
- // Get CSRF token
-    const csrfResponse = await axios.get('http://localhost:8000/task/getCSRF');
-    const csrfTokenVar = csrfResponse.data["data"].csrfToken;
+    const taskStatus = 'Todo'
+    // Get CSRF token
+    const csrfResponse = await axios.get('http://localhost:8000/task/getCSRF')
+    const csrfTokenVar = csrfResponse.data['data'].csrfToken
 
-    const userEmail = user?.email;
-    console.log(userEmail);
-    const url = 'http://localhost:8000/task/post/'+userEmail;
+    const userEmail = user?.email
+    console.log(userEmail)
+    const url = 'http://localhost:8000/task/post/' + userEmail
 
-    fetch(url, { // API endpoint
+    fetch(url, {
+      // API endpoint
       method: 'POST',
       headers: {
-          'Content-Type': 'application/json', // Ensure proper content type
+        'Content-Type': 'application/json' // Ensure proper content type
       },
       body: JSON.stringify({
         Title: taskTitle,
@@ -47,25 +48,25 @@ const CreateTodoForm = ({ user, fetchData }) => {
         _csrf: csrfTokenVar
       })
     })
-    .then((res)=>{
-      console.log(res);
-    })
-    .catch(error => console.error('Error:', error));
+      .then(res => {
+        console.log(res)
+      })
+      .catch(error => console.error('Error:', error))
     // Close the form after submission
     console.log('form Submitted')
-    fetchData();
-    closeModal();
-  };
+    fetchData()
+    closeModal()
+  }
 
   // State variable to control the modal
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-// Function to open the modal
+  const [modalIsOpen, setIsOpen] = React.useState(false)
+  // Function to open the modal
   function openModal() {
-    setIsOpen(true);
+    setIsOpen(true)
   }
- // Function to close the modal
+  // Function to close the modal
   function closeModal() {
-    setIsOpen(false);
+    setIsOpen(false)
   }
 
   return (
@@ -75,31 +76,47 @@ const CreateTodoForm = ({ user, fetchData }) => {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
-        contentLabel="Create Todo Modal"
+        contentLabel='Create Todo Modal'
       >
         <button
-          type="button"
-          className="close"
-          data-dismiss="modal"
-          aria-label="Close"
+          type='button'
+          className='close'
+          data-dismiss='modal'
+          aria-label='Close'
           onClick={closeModal}
-        ><span aria-hidden="true">&times;</span>
+        >
+          <span aria-hidden='true'>&times;</span>
         </button>
-        <h2 >Create Todo</h2>
+        <h2>Create Todo</h2>
 
         <div>Enter your details here</div>
-        <form className='create-todo-form' onSubmit={ handleFormSubmit }>
-          <label htmlFor="Todo-title">Title :  </label>
-          <input type="text" name="Todo-title" id="Todo-title" onChange={(e)=> setTitle(e.target.value)} />
-          <label htmlFor="Todo-description">Description :  </label>
-          <input type="text" name="Todo-description" id="Todo-description" onChange={(e)=> setDescription(e.target.value)} />
-          <label htmlFor="due-date">Due date :  </label>
-          <input type="date" name="due-date" id="due-date" onChange={(e)=> setDuedate(e.target.value)} />
-          <input type="submit" value="Submit" />
+        <form className='create-todo-form' onSubmit={handleFormSubmit}>
+          <label htmlFor='Todo-title'>Title : </label>
+          <input
+            type='text'
+            name='Todo-title'
+            id='Todo-title'
+            onChange={e => setTitle(e.target.value)}
+          />
+          <label htmlFor='Todo-description'>Description : </label>
+          <input
+            type='text'
+            name='Todo-description'
+            id='Todo-description'
+            onChange={e => setDescription(e.target.value)}
+          />
+          <label htmlFor='due-date'>Due date : </label>
+          <input
+            type='date'
+            name='due-date'
+            id='due-date'
+            onChange={e => setDuedate(e.target.value)}
+          />
+          <input type='submit' value='Submit' />
         </form>
       </Modal>
     </div>
-  );
-};
+  )
+}
 
-export default CreateTodoForm;
+export default CreateTodoForm

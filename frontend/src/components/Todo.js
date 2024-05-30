@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Trash } from 'react-bootstrap-icons';
 import UpdateTodoForm from './UpdateTodoForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash} from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const Todo = ({ todo, userEmail, fetchData }) => {
   // Function to determine the background color based on the todo status
@@ -21,14 +21,14 @@ const Todo = ({ todo, userEmail, fetchData }) => {
   };
   // Format the due date
   const correctDate = new Date(todo.Duedate).toISOString().split('T')[0];
- // Function to handle task deletion
+  // Function to handle task deletion
   async function handleTaskDelete() {
     const url = `http://localhost:8000/task/delete/${userEmail}?id=${todo._id}`;
     const deleteResponse = await axios.delete(url);
     console.log(deleteResponse.status);
     fetchData();
   }
-// Function to handle status change
+  // Function to handle status change
   async function handleStatusChange(e) {
     console.log(e.target.value);
     const newStatus = e.target.value;
@@ -67,7 +67,7 @@ const Todo = ({ todo, userEmail, fetchData }) => {
                 <UpdateTodoForm task={todo} userEmail={userEmail} fetchData={fetchData} />
                 <div className='todo-option-contents'>
                   <button className="delete-btn" onClick={handleTaskDelete}>
-                    <FontAwesomeIcon icon={faTrash}/> {/* Use the Trash icon from 'react-bootstrap-icons' */}
+                    <FontAwesomeIcon icon={faTrash} /> {/* Use the Trash icon from 'react-bootstrap-icons' */}
                   </button>
                 </div>
               </div>

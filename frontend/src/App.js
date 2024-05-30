@@ -9,7 +9,6 @@ import {
 } from "react-router-dom";
 import Login from "./components/login";
 import SignUp from "./components/register";
-
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Profile from "./components/profile";
@@ -21,7 +20,7 @@ function App() {
   // State to hold the logged-in user
   const [user, setUser] = useState();
   useEffect(() => {
-     // Listen for changes in the authentication state
+    // Listen for changes in the authentication state
     auth.onAuthStateChanged((user) => {
       setUser(user);
     });
@@ -32,11 +31,11 @@ function App() {
         <div className="">
 
           <Routes>
-            <Route path="/" element={user ? <Navigate to="/profile" /> : <div className="auth-wrapper auth-inner"><Login /></div>}/>
+            <Route path="/" element={user ? <Navigate to="/profile" /> : <div className="auth-wrapper auth-inner"><Login /></div>} />
             <Route path="/login" element={<div className="auth-wrapper auth-inner"><Login /></div>} />
             <Route path="/register" element={<div className="auth-wrapper auth-inner"><SignUp /></div>} />
             <Route path="/forgotPassword" element={<div className="auth-wrapper auth-inner"><ForgotPassword /></div>} />
-            <Route path="/profile" element={user?<Profile />:<div className="auth-wrapper auth-inner"><Login/></div>} />
+            <Route path="/profile" element={user ? <Profile /> : <div className="auth-wrapper auth-inner"><Login /></div>} />
           </Routes>
           <ToastContainer />
 

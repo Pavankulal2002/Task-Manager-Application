@@ -12,7 +12,7 @@ function Register() {
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
 
-   // Function to handle user registration
+  // Function to handle user registration
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
