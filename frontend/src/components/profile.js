@@ -73,11 +73,31 @@ function Profile() {
   //     )}
   //   </div>
   // );
+
   const handleClickPhoto = () => {
     setDisplayDetails(!displayDetails);
   };
+
+  let todos=[
+    {
+      Title: 'Learn running today very fast',
+      Description: 'I need to learn cooking to eat food',
+      Status: 'InProgress',
+      Duedate: "2029-09-07",
+      _id: '6655ed977esfb6a9a766054a3'
+    },
+    {
+      Title: 'Learn running today',
+      Description: 'I need to learn cooking to eat food',
+      Status: 'Todo',
+      Duedate: "2029-09-07",
+      _id: '6655ed987efb6a9a7s66054a5'
+    },  
+]
   return (
+
     <div>
+      
       <div className="top-div">
         <nav className="navbar">
           <div className="navbar-brand">ToDo APP</div>
@@ -115,12 +135,13 @@ function Profile() {
       </div>
       <div className="app">
         <div className="todos">
-          <Todo />
-          <Todo />
-          <Todo />
+        {todos.map((todo) => <Todo key={todo._id} todo={todo}/>)}
+          
         </div>
       </div>
     </div>
+    
+  
   );
 
 }
