@@ -45,9 +45,9 @@ sudo service redis-server start
 
 Yoy can ping the server using following command
 
-'''bash
+```bash
 redis-cli ping
-'''
+```
 
 4. Run the application:
 
