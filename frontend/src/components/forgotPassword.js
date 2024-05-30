@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import { auth } from "./firebase";
 import { toast } from "react-toastify";
 import '../index.css'
-
+ 
 function ForgotPassword() {
   const [email, setEmail] = useState("");
-
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -22,20 +22,20 @@ function ForgotPassword() {
           const errorMessage = error.message;
           console.log(errorMessage)
         });
-
+ 
     } catch (error) {
       console.log(error.message);
-
+ 
       toast.error(error.message, {
         position: "bottom-center",
       });
     }
   };
-
+ 
   return (
     <form onSubmit={handleSubmit}>
       <h3>Reset Password</h3>
-
+ 
       <div className="mb-3">
         <label>Email address</label>
         <input
@@ -52,12 +52,12 @@ function ForgotPassword() {
           Reset Password
         </button>
       </div>
-
+ 
       <p className="forgot-password text-right">
         Know the password? <a href="/login">Login</a>
       </p>
     </form>
   );
 }
-
+ 
 export default ForgotPassword;

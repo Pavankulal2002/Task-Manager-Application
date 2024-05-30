@@ -2,32 +2,46 @@ import React, { useEffect, useState } from "react";
 import { ClipLoader } from 'react-spinners'
 import { auth, db } from "./firebase";
 import { doc, getDoc } from "firebase/firestore";
-import './styles.css'
-import CreateTodoButton from './CreateTodoButton';
-import FilterDropdown from './FilterDropdown';
+import axios from "axios";
+import './styles.css';
 import Todo from './Todo';
 import CreateTodoForm from './CreateTodoForm';
-import UpdateTodoForm from './UpdateTodoForm';
 
 function Profile() {
   const [userDetails, setUserDetails] = useState(null);
   const [displayDetails, setDisplayDetails] = useState(false);
+  const [tasks, setTasks] = useState(null);
+  const [allTasks, setAllTasks] = useState(null);
+  // var tasks;
 
   const fetchUserData = async () => {
     auth.onAuthStateChanged(async (user) => {
-      if (user) { // Check if user is logged in
+      // Check if user is logged in
+      if (user) { 
         const docRef = doc(db, "Users", user.uid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           setUserDetails(docSnap.data());
         } else {
           console.log("User data does not exist");
+          return;
         }
+
+        const userEmail = user.email;
+        const url = 'http://localhost:8000/task/get/'+userEmail;
+        const response = await axios.get(url)
+        const responseData = response.data["data"];
+        // tasks = responseData;
+        setTasks(responseData);
+        setAllTasks(responseData);
+        console.log(responseData);
       } else {
         console.log("User is not logged in");
       }
     });
   };
+
+  // fetchUserData();
 
   useEffect(() => {
     fetchUserData();
@@ -36,8 +50,8 @@ function Profile() {
   async function handleLogout() {
     try {
       await auth.signOut();
-      window.location.href = "/login";
       console.log("User logged out successfully!");
+      window.location.href = "/login";
     } catch (error) {
       console.error("Error logging out:", error.message);
     }
@@ -73,31 +87,25 @@ function Profile() {
   //     )}
   //   </div>
   // );
-
   const handleClickPhoto = () => {
     setDisplayDetails(!displayDetails);
   };
 
-  let todos=[
-    {
-      Title: 'Learn running today very fast',
-      Description: 'I need to learn cooking to eat food',
-      Status: 'InProgress',
-      Duedate: "2029-09-07",
-      _id: '6655ed977esfb6a9a766054a3'
-    },
-    {
-      Title: 'Learn running today',
-      Description: 'I need to learn cooking to eat food',
-      Status: 'Todo',
-      Duedate: "2029-09-07",
-      _id: '6655ed987efb6a9a7s66054a5'
-    },  
-]
-  return (
+  function handleFilterChange(e){
+    const newFilter = String(e.target.value);
+    console.log(e.target.value);
+    if(newFilter=='All'){
+      setTasks(allTasks);
+    }else{
+      const newTasks = allTasks;
+      const filteredTasks = newTasks.filter(item => item.Status === newFilter);
+      setTasks(filteredTasks);
+      console.log(filteredTasks);
+    }
+  }
 
+  return (
     <div>
-      
       <div className="top-div">
         <nav className="navbar">
           <div className="navbar-brand">ToDo APP</div>
@@ -127,21 +135,25 @@ function Profile() {
 
       <div className="fixed-bar">
         <div className="top-left">
-          <CreateTodoForm />
+          <CreateTodoForm user = {userDetails} fetchData = { fetchUserData }/>
         </div>
         <div className="top-right">
-          <FilterDropdown />
+          <select className="filter-dropdown" onChange={(e)=>handleFilterChange(e)}>
+            <option value="All" default>All</option>
+            <option value="Todo">To Do</option>
+            <option value="InProgress">In Progress</option>
+            <option value="Done">Done</option>
+          </select>
         </div>
       </div>
       <div className="app">
         <div className="todos">
-        {todos.map((todo) => <Todo key={todo._id} todo={todo}/>)}
-          
+        {tasks? tasks.map((todo) => <Todo key={todo._id} todo={todo} userEmail={userDetails?.email} fetchData = { fetchUserData }/>) : <div className="loader">
+           <ClipLoader color="#36d7b7" />
+        </div>} 
         </div>
       </div>
     </div>
-    
-  
   );
 
 }

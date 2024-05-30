@@ -11,14 +11,14 @@
   display: flex;
   justify-content: space-between;
 }
-
+ 
 .top-left,
 .top-right {
   display: flex;
   align-items: center;
 }
-
-
+ 
+ 
 .app {
   margin-top: 80px;
   display: flex;
@@ -30,37 +30,37 @@
   padding: 20px;
   position: relative;
 }
-
+ 
 .top-left {
   position: absolute;
   top: 20px;
   left: 10%;
 }
-
+ 
 .top-right {
   position: absolute;
   top: 20px;
   right: 10%;
 }
-
-
+ 
+ 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
+ 
 .navbar-brand {
   font-size: 24px;
   font-weight: bold;
 }
-
+ 
 .navbar-profile {
   display: flex;
   align-items: center;
   position: relative;
 }
-
+ 
 .navbar-profile img {
   margin-right: 20px;
   width: 40px;
@@ -68,7 +68,7 @@
   border-radius: 50%;
   cursor: pointer;
 }
-
+ 
 .togle-menu {
   position: absolute;
   top: 100%;
@@ -81,11 +81,11 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 2;
 }
-
+ 
 .togle-menu p {
   margin: 5px 0;
 }
-
+ 
 .profile-box {
   display: flex;
   flex-direction: column;
@@ -95,23 +95,23 @@
   border: none;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-
+ 
 .btn {
   margin-top: 10px;
 }
-
-
+ 
+ 
 .content {
   padding: 20px;
 }
-
+ 
 .loader {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
-
+ 
 .top-div {
   position: fixed;
   top: 0;
@@ -126,8 +126,8 @@
   z-index: 999;
   /* To ensure it appears on top of other page elements */
 }
-
-
+ 
+ 
 .create-todo-button button {
   background-color: #007bff;
   color: #fff;
@@ -137,16 +137,16 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
-
+ 
 .create-todo-button button:hover {
   background-color: #0056b3;
 }
-
+ 
 .todos {
   width: 100%;
   margin-top: 20px;
 }
-
+ 
 .todo {
   width: 100%;
   max-width: 700px;
@@ -156,30 +156,30 @@
   padding: 20px;
   margin: 20px auto 20px auto;
 }
-
-
+ 
+ 
 .todo-content {
   margin-bottom: 10px;
 }
-
+ 
 .todo-content h2 {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 5px;
 }
-
+ 
 .todo-content p {
   font-size: 14px;
   color: #555;
   margin: 0;
 }
-
+ 
 .todo-options {
   display: flex;
   justify-content: space-evenly;
 }
-
-
+ 
+ 
 button {
   background-color: #007bff;
   color: #fff;
@@ -189,22 +189,22 @@ button {
   cursor: pointer;
   margin-right: 5px;
 }
-
+ 
 .status-dropdown {
   margin-top: 10px;
   padding: 5px;
 }
-
+ 
 /* Responsive Styles */
 @media (max-width: 600px) {
   .todo {
     max-width: 100%;
   }
 }
-
-
-
-
+ 
+ 
+ 
+ 
 .create-todo-modal {
   position: absolute;
   top: 70%;
@@ -218,13 +218,13 @@ button {
   width: 100%;
   text-align: center;
 }
-
+ 
 .create-todo-modal h2 {
   margin-top: 0;
   font-size: 24px;
   color: #333;
 }
-
+ 
 .create-todo-modal button {
   margin-top: 10px;
   padding: 10px 20px;
@@ -235,24 +235,24 @@ button {
   font-size: 16px;
   cursor: pointer;
 }
-
+ 
 .create-todo-modal div {
   margin-top: 20px;
   color: #555;
 }
-
+ 
 .create-todo-form {
   margin-top: 20px;
   text-align: left;
 }
-
+ 
 .create-todo-form label {
   display: block;
   margin-top: 10px;
   font-size: 14px;
   color: #555;
 }
-
+ 
 .create-todo-form input[type="text"],
 .create-todo-form input[type="date"] {
   width: 100%;
@@ -262,7 +262,7 @@ button {
   box-sizing: border-box;
   margin-top: 4px;
 }
-
+ 
 .create-todo-form input[type="submit"] {
   margin-top: 16px;
   padding: 10px 20px;
@@ -274,11 +274,11 @@ button {
   cursor: pointer;
   width: 100%;
 }
-
+ 
 .delete-btn {
   background-color: red;
 }
-
+ 
 .close {
   color: #fff;
   background-color: #b8b4b4d7;
@@ -289,7 +289,7 @@ button {
   border-radius: 50%;
   border: 2px solid #333;
 }
-
+ 
 .close:hover,
 .close:focus {
   color: #000;
