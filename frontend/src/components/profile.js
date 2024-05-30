@@ -146,9 +146,12 @@ function Profile() {
       </div>
       <div className="app">
         <div className="todos">
-        {tasks? tasks.map((todo) => <Todo key={todo._id} todo={todo} userEmail={userDetails?.email} fetchData = { fetchUserData }/>) : (<div className="loader">
-           <ClipLoader color="#36d7b7" />
-        </div>)} 
+        {tasks && tasks.length === 0 ? (
+  <p className="no-tasks">NO TASKS</p>
+) :(tasks? tasks.map((todo) => <Todo key={todo._id} todo={todo} userEmail={userDetails?.email} fetchData = { fetchUserData }/>) : (<div className="loader">
+<ClipLoader color="#36d7b7" />
+</div>))}
+        
         </div>
       </div>
     </div>
