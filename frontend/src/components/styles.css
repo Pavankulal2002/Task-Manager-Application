@@ -143,43 +143,71 @@
 }
  
 .todos {
-  width: 100%;
+  width: 90%;
   margin-top: 20px;
 }
  
 .todo {
-  width: 100%;
-  max-width: 700px;
-  background-color: #f7f7f7;
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  margin: 20px auto 20px auto;
+  margin-bottom: 20px;
 }
- 
- 
+
+.todo table {
+  width: 100%;
+}
+
+.todo td {
+  padding: 10px;
+}
+
 .todo-content {
   margin-bottom: 10px;
 }
- 
-.todo-content h2 {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
- 
-.todo-content p {
-  font-size: 14px;
-  color: #555;
-  margin: 0;
-}
- 
+
 .todo-options {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: flex-end;
 }
- 
- 
+
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin:5px;
+}
+
+.Update-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin:5px;
+}
+
+.status-dropdown {
+  padding: 5px;
+}
+
+/* Responsive Styles */
+
+@media only screen and (max-width: 400px) {
+  .todo {
+    padding: 10px;
+  }
+
+  .todo td {
+    padding: 5px;
+  }
+
+  .todo-options {
+    align-items: flex-end;
+  }
+}
+
 button {
   background-color: #007bff;
   color: #fff;
@@ -190,11 +218,6 @@ button {
   margin-right: 5px;
 }
  
-.status-dropdown {
-  margin-top: 10px;
-  padding: 5px;
-}
- 
 /* Responsive Styles */
 @media (max-width: 600px) {
   .todo {
@@ -202,6 +225,7 @@ button {
   }
 }
  
+
  
  
  

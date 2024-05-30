@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import Modal from 'react-modal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import axios from "axios";
 
 
@@ -63,7 +65,10 @@ const UpdateTodoForm = ({ task, userEmail, fetchData }) => {
 
   return (
     <div >
-      <button onClick={openModal} className='update-btn'>Update</button>
+      <button className="update-btn" onClick={openModal}>
+  <FontAwesomeIcon icon={faEdit} />
+</button>
+
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
