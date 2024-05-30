@@ -143,8 +143,8 @@
 }
  
 .todos {
-  width: 90%;
-  margin-top: 20px;
+  width: 83%;
+  margin-top: 50px;
 }
  
 .todo {
@@ -320,4 +320,49 @@ button {
   text-decoration: none;
   cursor: pointer;
   outline: none;
+}
+
+.todo-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: flex-start;
+}
+
+.todo-content{
+  text-align: left;
+}
+
+.todo-option-contents{
+  width: 100%;
+}
+
+.todo-option-contents button{
+  margin: 0px;
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.todo-content select{
+  border-radius: 5px;
+}
+
+.todo-option-parent{
+  width: 15%;
+}
+
+.todo{
+  max-height: 200px;
+  width: 100%;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  overflow-x: auto;
+  scroll-behavior: unset;
+}
+
+.todos{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

@@ -64,10 +64,10 @@ const UpdateTodoForm = ({ task, userEmail, fetchData }) => {
   }
 
   return (
-    <div >
+    <div className='todo-option-contents'>
       <button className="update-btn" onClick={openModal}>
-  <FontAwesomeIcon icon={faEdit} />
-</button>
+        <FontAwesomeIcon icon={faEdit} />
+      </button>
 
       <Modal
         isOpen={modalIsOpen}

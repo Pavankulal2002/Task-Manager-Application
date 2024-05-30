@@ -43,29 +43,30 @@ const Todo = ({ todo, userEmail, fetchData }) => {
       <table>
         <tbody>
           <tr>
-            <td>
+            <td className='todo-content-parent'>
               <div className="todo-content">
                 <h2>{todo.Title}</h2>
                 <p>{todo.Description}</p>
                 <p>{correctDate}</p>
+                <label></label>
+                <select
+                  className="status-dropdown"
+                  defaultValue={todo.Status}
+                  onChange={handleStatusChange}
+                >
+                  <option value="Todo">To Do</option>
+                  <option value="InProgress">In Progress</option>
+                  <option value="Done">Done</option>
+                </select>
               </div>
             </td>
-            <td>
+            <td className='todo-option-parent'>
               <div className="todo-options">
-              <UpdateTodoForm task={todo} userEmail={userEmail} fetchData={fetchData} />
-                <button className="delete-btn" onClick={handleTaskDelete}>
-                <FontAwesomeIcon icon={faTrash}/> {/* Use the Trash icon from 'react-bootstrap-icons' */}
-                </button>
-                <div>
-                  <select
-                    className="status-dropdown"
-                    defaultValue={todo.Status}
-                    onChange={handleStatusChange}
-                  >
-                    <option value="Todo">To Do</option>
-                    <option value="InProgress">In Progress</option>
-                    <option value="Done">Done</option>
-                  </select>
+                <UpdateTodoForm task={todo} userEmail={userEmail} fetchData={fetchData} />
+                <div className='todo-option-contents'>
+                  <button className="delete-btn" onClick={handleTaskDelete}>
+                    <FontAwesomeIcon icon={faTrash}/> {/* Use the Trash icon from 'react-bootstrap-icons' */}
+                  </button>
                 </div>
               </div>
             </td>
