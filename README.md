@@ -18,3 +18,7 @@ GET - http://localhost:8000/task/logout
 
 CSRF generation
 GET - http://localhost:8000/task/getCSRF
+
+redis config
+how to install all modules
+how to run

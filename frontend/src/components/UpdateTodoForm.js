@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Modal from 'react-modal';
+import axios from "axios";
 
 
 const customStyles = {
@@ -14,18 +15,42 @@ const customStyles = {
 };
 
 Modal.setAppElement('#root')
-const UpdateTodoForm = ({ close }) => {
-  const handleFormSubmit = (e) => {
+const UpdateTodoForm = ({ task, userEmail, fetchData }) => {
+  const correctDate = new Date(task.Duedate).toISOString().split('T')[0];
+
+  const[taskTitle, setTitle] = useState(task.Title);
+  const[taskDescription, setDescription] = useState(task.Description);
+  const[taskDuedate, setDuedate] = useState(correctDate);
+
+  const oldTitle = task.Title;
+  const oldDescription = task.Description;
+  const oldDuedate = correctDate;
+
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     // Handle form submission logic here
-    // ...
+    const updatedTask = {}
+
+    if(oldTitle!=taskTitle){
+      updatedTask["Title"] = taskTitle;
+    }
+    if(oldDescription!=taskDescription){
+      updatedTask["Description"] = taskDescription;
+    }
+    if(oldDuedate!=taskDuedate){
+      updatedTask["Duedate"] = taskDuedate;
+    }
+
+    console.log(updatedTask);
+    const url = 'http://localhost:8000/task/patch/'+userEmail+'?id='+task._id;
+    const patchResponse = await axios.patch(url, updatedTask);
+    console.log(patchResponse.status);
     // Close the form after submission
     console.log('form Submitted')
-    close();
+    closeModal();
+    fetchData();
   };
 
-
-  let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function openModal() {
@@ -56,13 +81,13 @@ const UpdateTodoForm = ({ close }) => {
         <h2 >Update Todo</h2>
 
         <div>Update your details here</div>
-        <form className='create-todo-form'>
+        <form className='create-todo-form' onSubmit={ (e)=>handleFormSubmit(e)}>
           <label htmlFor="Todo-title">Title :  </label>
-          <input type="text" name="Todo-title" id="Todo-title" />
+          <input type="text" name="Todo-title" id="Todo-title" value={taskTitle} onChange={(e)=>setTitle(e.target.value)}/>
           <label htmlFor="Todo-description">Description :  </label>
-          <input type="text" name="Todo-description" id="Todo-description" />
+          <input type="text" name="Todo-description" id="Todo-description" value={taskDescription} onChange={(e)=>setDescription(e.target.value)}/>
           <label htmlFor="due-date">Due date :  </label>
-          <input type="date" name="due-date" id="due-date" />
+          <input type="date" name="due-date" id="due-date" value={taskDuedate} onChange={(e)=>setDuedate(e.target.value)}/>
           <input type="submit" value="Submit" />
         </form>
       </Modal>

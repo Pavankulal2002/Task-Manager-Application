@@ -44,7 +44,7 @@ const Todo = ({todo, userEmail, fetchData}) => {
             <p>{todo.Duedate}</p>
           </div>
           <div className="todo-options">
-            <UpdateTodoForm todo={todo} />
+            <UpdateTodoForm task={todo} userEmail={userEmail} fetchData={fetchData} />
             <button className="delete-btn" onClick={(e)=>handleTaskDelete(e)}>Delete</button>
             <div>
               <label htmlFor="update-status">Status:</label>
