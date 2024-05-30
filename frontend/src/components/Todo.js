@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash} from '@fortawesome/free-solid-svg-icons';
 
 const Todo = ({ todo, userEmail, fetchData }) => {
+  // Function to determine the background color based on the todo status
   const getStatusStyle = () => {
     switch (todo.Status) {
       case 'Todo':
@@ -18,15 +19,16 @@ const Todo = ({ todo, userEmail, fetchData }) => {
         return {};
     }
   };
+  // Format the due date
   const correctDate = new Date(todo.Duedate).toISOString().split('T')[0];
-
+ // Function to handle task deletion
   async function handleTaskDelete() {
     const url = `http://localhost:8000/task/delete/${userEmail}?id=${todo._id}`;
     const deleteResponse = await axios.delete(url);
     console.log(deleteResponse.status);
     fetchData();
   }
-
+// Function to handle status change
   async function handleStatusChange(e) {
     console.log(e.target.value);
     const newStatus = e.target.value;

@@ -18,19 +18,19 @@ const customStyles = {
 
 Modal.setAppElement('#root')
 const UpdateTodoForm = ({ task, userEmail, fetchData }) => {
+  // State variables to store the updated input values
   const correctDate = new Date(task.Duedate).toISOString().split('T')[0];
-
   const[taskTitle, setTitle] = useState(task.Title);
   const[taskDescription, setDescription] = useState(task.Description);
   const[taskDuedate, setDuedate] = useState(correctDate);
-
+// Original values of the task before updating
   const oldTitle = task.Title;
   const oldDescription = task.Description;
   const oldDuedate = correctDate;
-
+// Function to handle form submission
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
+    // Prepare the updated task object
     const updatedTask = {}
 
     if(oldTitle!=taskTitle){
@@ -53,12 +53,14 @@ const UpdateTodoForm = ({ task, userEmail, fetchData }) => {
     fetchData();
   };
 
+  // State variable to control the modal
   const [modalIsOpen, setIsOpen] = React.useState(false);
-
+// Function to open the modal
   function openModal() {
     setIsOpen(true);
   }
 
+   // Function to close the modal
   function closeModal() {
     setIsOpen(false);
   }

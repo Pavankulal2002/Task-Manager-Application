@@ -16,15 +16,17 @@ const customStyles = {
 
 Modal.setAppElement('#root')
 const CreateTodoForm = ({ user, fetchData }) => {
+  // State variables to store the input values
   const [taskTitle, setTitle] = useState('');
   const [taskDescription, setDescription] = useState('');
   const [taskDuedate, setDuedate] = useState('');
 
+  // Function to handle form submission
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     // Handle form submission logic here
     const taskStatus = "Todo";
-
+ // Get CSRF token
     const csrfResponse = await axios.get('http://localhost:8000/task/getCSRF');
     const csrfTokenVar = csrfResponse.data["data"].csrfToken;
 
@@ -32,7 +34,7 @@ const CreateTodoForm = ({ user, fetchData }) => {
     console.log(userEmail);
     const url = 'http://localhost:8000/task/post/'+userEmail;
 
-    fetch(url, { // Your API endpoint
+    fetch(url, { // API endpoint
       method: 'POST',
       headers: {
           'Content-Type': 'application/json', // Ensure proper content type
@@ -55,12 +57,13 @@ const CreateTodoForm = ({ user, fetchData }) => {
     closeModal();
   };
 
+  // State variable to control the modal
   const [modalIsOpen, setIsOpen] = React.useState(false);
-
+// Function to open the modal
   function openModal() {
     setIsOpen(true);
   }
-
+ // Function to close the modal
   function closeModal() {
     setIsOpen(false);
   }

@@ -17,7 +17,7 @@ function Profile() {
   const fetchUserData = async () => {
     auth.onAuthStateChanged(async (user) => {
       // Check if user is logged in
-      if (user) { 
+      if (user) {
         const docRef = doc(db, "Users", user.uid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
@@ -28,7 +28,7 @@ function Profile() {
         }
 
         const userEmail = user.email;
-        const url = 'http://localhost:8000/task/get/'+userEmail;
+        const url = 'http://localhost:8000/task/get/' + userEmail;
         const response = await axios.get(url)
         const responseData = response.data["data"];
         // tasks = responseData;
@@ -54,47 +54,17 @@ function Profile() {
       console.error("Error logging out:", error.message);
     }
   }
-  // return (
-  //   <div className="home">
-  //     {userDetails ? (
-  //       <>
-  //         <div style={{ display: "flex", justifyContent: "center" }}>
-  //           <img
-  //             src={userDetails.photo}
-  //             width={"40%"}
-  //             style={{ borderRadius: "50%" }}
-  //           />
-  //         </div>
-  //         <h3>Welcome {userDetails.firstName} 🙏🙏</h3>
-  //         <div>
-  //           <p>Email: {userDetails.email}</p>
-  //           <p>First Name: {userDetails.firstName}</p>
-  //           {/* <p>Last Name: {userDetails.lastName}</p> */}
-  //         </div>
-  //         <button className="btn btn-primary" onClick={handleLogout}>
-  //           Logout
-  //         </button>
-  //       </>
-  //     ) : (
-  //       // <p>Loading...</p>
-
-  //       <div className="loader">
-  //         <ClipLoader color="#36d7b7" />
-  //       </div>
-
-  //     )}
-  //   </div>
-  // );
+  
   const handleClickPhoto = () => {
     setDisplayDetails(!displayDetails);
   };
 
-  function handleFilterChange(e){
+  function handleFilterChange(e) {
     const newFilter = String(e.target.value);
     console.log(e.target.value);
-    if(newFilter=='All'){
+    if (newFilter == 'All') {
       setTasks(allTasks);
-    }else{
+    } else {
       const newTasks = allTasks;
       const filteredTasks = newTasks.filter(item => item.Status === newFilter);
       setTasks(filteredTasks);
@@ -106,7 +76,7 @@ function Profile() {
     <div>
       <div className="top-div">
         <nav className="navbar">
-          <div className="navbar-brand">ToDo APP</div>
+          <div className="navbar-brand">Task Manager</div>
           <div className="navbar-profile" onClick={handleClickPhoto}>
             <img
               src={userDetails?.photo}
@@ -133,10 +103,10 @@ function Profile() {
 
       <div className="fixed-bar">
         <div className="top-left">
-          <CreateTodoForm user = {userDetails} fetchData = { fetchUserData }/>
+          <CreateTodoForm user={userDetails} fetchData={fetchUserData} />
         </div>
         <div className="top-right">
-          <select className="filter-dropdown" onChange={(e)=>handleFilterChange(e)}>
+          <select className="filter-dropdown" onChange={(e) => handleFilterChange(e)}>
             <option value="All" default>All</option>
             <option value="Todo">To Do</option>
             <option value="InProgress">In Progress</option>
@@ -146,12 +116,12 @@ function Profile() {
       </div>
       <div className="app">
         <div className="todos">
-        {tasks && tasks.length === 0 ? (
-  <p className="no-tasks">NO TASKS</p>
-) :(tasks? tasks.map((todo) => <Todo key={todo._id} todo={todo} userEmail={userDetails?.email} fetchData = { fetchUserData }/>) : (<div className="loader">
-<ClipLoader color="#36d7b7" />
-</div>))}
-        
+          {tasks && tasks.length === 0 ? (
+            <p className="no-tasks">NO TASKS</p>
+          ) : (tasks ? tasks.map((todo) => <Todo key={todo._id} todo={todo} userEmail={userDetails?.email} fetchData={fetchUserData} />) : (<div className="loader">
+            <ClipLoader color="#36d7b7" />
+          </div>))}
+
         </div>
       </div>
     </div>

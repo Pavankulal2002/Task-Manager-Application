@@ -5,27 +5,34 @@ import { toast } from "react-toastify";
 import '../index.css'
  
 function ForgotPassword() {
+  // State variable to store the email input field value
   const [email, setEmail] = useState("");
  
+  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // Send a password reset email to the provided email address
       sendPasswordResetEmail(auth, email)
         .then(() => {
+          // Display a success toast message and redirect to the login page
           toast.success("Reset mail sent successfully.\/n Please check your mail", {
             position: "top-center",
           });
           window.location.href = "/login";
         })
+
         .catch((error) => {
+          // Handle any errors that occur during the password reset process
           const errorCode = error.code;
           const errorMessage = error.message;
           console.log(errorMessage)
+          console.log(errorCode)
         });
  
     } catch (error) {
       console.log(error.message);
- 
+ // Display an error toast message
       toast.error(error.message, {
         position: "bottom-center",
       });

@@ -6,18 +6,22 @@ import { toast } from "react-toastify";
 import '../index.css'
 
 function Register() {
+  // State variables to store the user registration information
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
 
+   // Function to handle user registration
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
+      // Create a new user with the provided email and password
       await createUserWithEmailAndPassword(auth, email, password);
       const user = auth.currentUser;
       console.log(user);
       if (user) {
+        // Add the user's information to the database
         await setDoc(doc(db, "Users", user.uid), {
           email: user.email,
           firstName: fname,

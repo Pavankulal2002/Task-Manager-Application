@@ -7,20 +7,25 @@ import axios from "axios";
 import '../index.css'
 
 function Login() {
+  // State variables to store the email and password input fields
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+   // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // Sign in the user with the provided email and password
       await signInWithEmailAndPassword(auth, email, password);
-      console.log("User logged in Successfully");
+      // Redirect the user to the profile page upon successful login
       window.location.href = "/profile";
+      // Display a success toast message
       toast.success("User logged in Successfully", {
         position: "top-center",
       });
     } catch (error) {
       console.log(error.message);
+      // Display an error toast message
       toast.error(error.message, {
         position: "bottom-center",
       });
