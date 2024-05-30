@@ -51,12 +51,11 @@ const Todo = ({ todo, userEmail, fetchData }) => {
             </td>
             <td>
               <div className="todo-options">
-                <UpdateTodoForm todo={todo} />
+              <UpdateTodoForm task={todo} userEmail={userEmail} fetchData={fetchData} />
                 <button className="delete-btn" onClick={handleTaskDelete}>
                 <FontAwesomeIcon icon={faTrash}/> {/* Use the Trash icon from 'react-bootstrap-icons' */}
                 </button>
                 <div>
-                  {/* <label htmlFor="update-status">Status:</label> */}
                   <select
                     className="status-dropdown"
                     defaultValue={todo.Status}
