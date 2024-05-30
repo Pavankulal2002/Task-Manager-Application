@@ -62,29 +62,11 @@ const Todo = ({ todo, userEmail, fetchData }) => {
             </td>
             <td className='todo-option-parent'>
               <div className="todo-options">
-<<<<<<< HEAD
                 <UpdateTodoForm task={todo} userEmail={userEmail} fetchData={fetchData} />
                 <div className='todo-option-contents'>
                   <button className="delete-btn" onClick={handleTaskDelete}>
                     <FontAwesomeIcon icon={faTrash}/> {/* Use the Trash icon from 'react-bootstrap-icons' */}
                   </button>
-=======
-              <UpdateTodoForm task={todo} userEmail={userEmail} fetchData={fetchData} />
-                <button className="delete-btn" onClick={handleTaskDelete}>
-                <FontAwesomeIcon icon={faTrash}/> {/* Use the Trash icon from 'react-bootstrap-icons' */}
-                </button>
-                
-                  <select
-                    className="status-dropdown"
-                    defaultValue={todo.Status}
-                    onChange={handleStatusChange}
-                  >
-                    <option value="Todo">To Do</option>
-                    <option value="InProgress">In Progress</option>
-                    <option value="Done">Done</option>
-                  </select>
-                  <div>
->>>>>>> 8fe773bc2629fb8b1d6e48396b9c0cada42d0e5a
                 </div>
               </div>
             </td>
