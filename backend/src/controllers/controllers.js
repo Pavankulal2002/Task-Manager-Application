@@ -40,7 +40,7 @@ async function getTasks(request, response){
         if(dataOut==null){
             tasks = await fetchTasks(userEmail);
             const serializedArray = JSON.stringify(tasks);
-            await redisClient.setEx('Tasks', 0.2, serializedArray);
+            await redisClient.setEx('Tasks', 1, serializedArray);
         }
         else{
             tasks = JSON.parse(dataOut);

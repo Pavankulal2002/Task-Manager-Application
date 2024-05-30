@@ -1,5 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 
 const customStyles = {
@@ -38,7 +40,10 @@ const UpdateTodoForm = ({ close }) => {
 
   return (
     <div >
-      <button onClick={openModal} className='update-btn'>Update</button>
+      <button className="update-btn" onClick={openModal}>
+  <FontAwesomeIcon icon={faEdit} />
+</button>
+
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
