@@ -14,7 +14,7 @@ function Profile() {
   const [displayDetails, setDisplayDetails] = useState(false);
   const [tasks, setTasks] = useState(null);
   const [allTasks, setAllTasks] = useState(null);
- 
+  const [isInitialRender, setIsInitialRender] = useState(true);
 
   const fetchUserData = async (e) => {
     auth.onAuthStateChanged(async (user) => {
@@ -78,8 +78,12 @@ function Profile() {
   }
 
   useEffect(() => {
-    handleFilterChange();
-  },[allTasks]);
+    if (isInitialRender) {
+      setIsInitialRender(false);
+    } else {
+      handleFilterChange();
+    }
+  }, [allTasks]);
   
   return (
     <div>
