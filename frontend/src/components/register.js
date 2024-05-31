@@ -29,10 +29,16 @@ function Register() {
           photo: ""
         });
       }
-      console.log("User Registered Successfully!!");
-      toast.success("User Registered Successfully!!", {
-        position: "top-center",
-      });
+      toast.success(
+        'User Registered Successfully!!',
+        {
+          position: 'top-center',
+          autoClose: 3000, // Display the toast message for 5 seconds
+          onClose: () => {
+            window.location.href = '/login'; // Redirect to the login page after toast is closed
+          }
+        }
+      );
     } catch (error) {
       console.log(error.message);
       toast.error(error.message, {

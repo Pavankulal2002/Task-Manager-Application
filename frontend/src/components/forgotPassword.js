@@ -17,12 +17,16 @@ function ForgotPassword() {
         .then(() => {
           // Display a success toast message and redirect to the login page
           toast.success(
-            'Reset mail sent successfully. Please check your mail',
+            'Password reset mail sent successfully. Please check your mail',
             {
-              position: 'top-center'
+              position: 'top-center',
+              autoClose: 4000, // Display the toast message for 5 seconds
+              onClose: () => {
+                window.location.href = '/login'; // Redirect to the login page after toast is closed
+              }
             }
-          )
-          window.location.href = '/login'
+          );
+          
         })
 
         .catch(error => {
