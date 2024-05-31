@@ -96,5 +96,6 @@ span {
   .auth-inner {
     width: 90%;
     max-width: 400px;
+    margin-top:80px;
   }
 }
