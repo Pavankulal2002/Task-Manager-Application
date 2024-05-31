@@ -25,7 +25,7 @@ function Login () {
     } catch (error) {
       console.log(error.message)
       // Display an error toast message
-      toast.error('incorrect credentials', {
+      toast.error('Incorrect credentials', {
         position: 'top-center'
       })
     }
