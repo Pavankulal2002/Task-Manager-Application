@@ -74,16 +74,15 @@ function Profile () {
       setTasks(filteredTasks)
     }
   }
-
+/* eslint-disable */
   useEffect(() => {
     if (isInitialRender) {
       setIsInitialRender(false)
     } else {
       handleFilterChange()
-      // eslint-disable-next-line
     }
   }, [allTasks])
-
+/* eslint-enable */
   return (
     <div>
       <div className='top-div'>
