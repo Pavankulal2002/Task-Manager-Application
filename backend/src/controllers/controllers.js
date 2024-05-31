@@ -193,7 +193,7 @@ async function getCSRFToken(request, response){
         csrfGlobal = request.csrfToken();
         return response.status(200).json({
             status: "Success",
-            message: "Data deletion successful",
+            message: "CSRF token generation successful",
             data: {
                 csrfToken: csrfGlobal
             }
