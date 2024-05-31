@@ -31,9 +31,15 @@ const Todo = ({ todo, userEmail, fetchData }) => {
   async function handleStatusChange(e) {
     console.log(e.target.value);
     const newStatus = e.target.value;
+
+    // Get CSRF token
+    const csrfResponse = await axios.get('http://localhost:8000/task/getCSRF')
+    const csrfTokenVar = csrfResponse.data['data'].csrfToken
+
     const url = `http://localhost:8000/task/patch/${userEmail}?id=${todo._id}`;
     const patchResponse = await axios.patch(url, {
       Status: newStatus,
+      _csrf: csrfTokenVar
     });
     console.log(patchResponse.status);
     fetchData();
