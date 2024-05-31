@@ -15,11 +15,6 @@ redisClient.connect();
 
 var csrfGlobal;
 
-// Validating user session
-function getSession(request){
-    return request.session.userEmail;
-}
-
 function validateTask(task){
     return (task.Title==null || task.Description==null || task.Status==null || !(isDate(task.Duedate)))
 }
