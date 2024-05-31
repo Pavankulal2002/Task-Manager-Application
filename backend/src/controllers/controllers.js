@@ -126,8 +126,17 @@ async function patchTasks(request, response){
             message: "User not logged in"
         })
     }
+    if(csrfGlobal!=request.body._csrf){
+        console.log("CSRF validation failed");
+        return response.status(400).json({
+            status: "Failed",
+            message: "CSRF validation failed"
+        })
+    }
+
     const id = request.query.id;
     const task = request.body;
+    delete task._csrf;
     var newTask = {};
     try{
         for (let key in task) {

@@ -23,10 +23,12 @@ const UpdateTodoForm = ({ task, userEmail, fetchData }) => {
   const [taskTitle, setTitle] = useState(task.Title);
   const [taskDescription, setDescription] = useState(task.Description);
   const [taskDuedate, setDuedate] = useState(correctDate);
+
   // Original values of the task before updating
   const oldTitle = task.Title;
   const oldDescription = task.Description;
   const oldDuedate = correctDate;
+
   // Function to handle form submission
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -43,10 +45,17 @@ const UpdateTodoForm = ({ task, userEmail, fetchData }) => {
       updatedTask["Duedate"] = taskDuedate;
     }
 
+    // Get CSRF token
+    const csrfResponse = await axios.get('http://localhost:8000/task/getCSRF')
+    const csrfTokenVar = csrfResponse.data['data'].csrfToken
+
+    updatedTask["_csrf"] = csrfTokenVar;
+
     console.log(updatedTask);
     const url = 'http://localhost:8000/task/patch/' + userEmail + '?id=' + task._id;
     const patchResponse = await axios.patch(url, updatedTask);
     console.log(patchResponse.status);
+
     // Close the form after submission
     console.log('form Submitted')
     closeModal();
@@ -55,6 +64,7 @@ const UpdateTodoForm = ({ task, userEmail, fetchData }) => {
 
   // State variable to control the modal
   const [modalIsOpen, setIsOpen] = React.useState(false);
+  
   // Function to open the modal
   function openModal() {
     setIsOpen(true);
