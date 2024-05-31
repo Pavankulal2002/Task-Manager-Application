@@ -171,7 +171,7 @@
 }
 
 .todo-content {
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 
 .todo-options {
@@ -345,7 +345,7 @@ button {
 
 .todo-option-contents button {
   margin: 0px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   width: 100%;
 }
 
@@ -358,12 +358,20 @@ button {
 }
 
 .todo {
-  max-height: 200px;
+  max-height: 180px;
   width: 100%;
   padding-top: 0px;
   padding-bottom: 0px;
   overflow-x: auto;
   scroll-behavior: unset;
+}
+
+.todo-content p{
+  margin-bottom: 3px;
+}
+
+.todo-content h2{
+  margin-bottom: 0px;
 }
 
 .todos {

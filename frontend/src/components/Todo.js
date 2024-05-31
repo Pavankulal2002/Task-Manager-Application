@@ -52,9 +52,9 @@ const Todo = ({ todo, userEmail, fetchData }) => {
           <tr>
             <td className='todo-content-parent'>
               <div className="todo-content">
-                <h2>{todo.Title}</h2>
+                <h3>{todo.Title}</h3>
                 <p>{todo.Description}</p>
-                <p>{correctDate}</p>
+                <p>Due: {correctDate}</p>
                 <label></label>
                 <select
                   className="status-dropdown"
