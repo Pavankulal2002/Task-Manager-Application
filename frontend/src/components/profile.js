@@ -64,11 +64,14 @@ function Profile() {
   async function handleFilterChange() {
     const newFilter = document.querySelector(".filter-dropdown").value;
     if (newFilter === 'All') {
-      setTasks(allTasks);
+      const allTasksArray = Object.values(allTasks); // Convert the object to an array
+      const reversedTasks = allTasksArray.reverse(); // Reverse the order of the array
+    setTasks(reversedTasks);
+
     } else {
       const newTasks = allTasks;
       console.log(newTasks);
-      const filteredTasks = newTasks.filter(item => item.Status === newFilter);
+      const filteredTasks = newTasks.filter(item => item.Status === newFilter).reverse();
       setTasks(filteredTasks);
       console.log(filteredTasks);
     }
@@ -76,7 +79,7 @@ function Profile() {
 
   useEffect(() => {
     handleFilterChange();
-  }, [allTasks]);
+  },[allTasks]);
   
   return (
     <div>
