@@ -9,11 +9,11 @@ import CreateTodoForm from './CreateTodoForm'
 import Button from 'react-bootstrap/Button'
 
 function Profile () {
-  const [userDetails, setUserDetails] = useState(null)
-  const [displayDetails, setDisplayDetails] = useState(false)
-  const [tasks, setTasks] = useState(null)
-  const [allTasks, setAllTasks] = useState(null)
-  const [isInitialRender, setIsInitialRender] = useState(true)
+  const [userDetails, setUserDetails] = useState(null);
+  const [displayDetails, setDisplayDetails] = useState(false);
+  const [tasks, setTasks] = useState(null);
+  const [allTasks, setAllTasks] = useState(null);
+  const [isInitialRender, setIsInitialRender] = useState(true);
 
   const fetchUserData = async e => {
     auth.onAuthStateChanged(async user => {
