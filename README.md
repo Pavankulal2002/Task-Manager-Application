@@ -19,6 +19,7 @@ A simple task manager application built using Node.js and React.js. It uses Mong
 
 **Redis** : You can find the full redis installation guide [here](https://redis.io/docs/latest/get-started/)
 
+**Internet connection** : A stable internet connection is required for firebase login and authentication.
 
 
 ## Installation
