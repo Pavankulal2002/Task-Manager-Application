@@ -33,7 +33,7 @@ function Profile() {
         const url = 'http://localhost:8000/task/get/' + userEmail;
         const response = await axios.get(url)
         const responseData = response.data["data"];
-        // tasks = responseData;
+
         setTasks(responseData);
         setAllTasks(responseData);
         console.log(responseData);
