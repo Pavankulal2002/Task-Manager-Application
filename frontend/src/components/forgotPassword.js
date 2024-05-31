@@ -17,7 +17,7 @@ function ForgotPassword() {
         .then(() => {
           // Display a success toast message and redirect to the login page
           toast.success(
-            'Reset mail sent successfully./n Please check your mail',
+            'Reset mail sent successfully. Please check your mail',
             {
               position: 'top-center'
             }
