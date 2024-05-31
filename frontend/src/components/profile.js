@@ -61,9 +61,8 @@ function Profile() {
     setDisplayDetails(!displayDetails);
   };
 
-  async function handleFilterChange(e) {
-    const newFilter = String(e.target.value);
-    console.log(e.target.value);
+  async function handleFilterChange() {
+    const newFilter = document.querySelector(".filter-dropdown").value;
     if (newFilter === 'All') {
       setTasks(allTasks);
     } else {
@@ -75,6 +74,10 @@ function Profile() {
     }
   }
 
+  useEffect(() => {
+    handleFilterChange();
+  }, [allTasks]);
+  
   return (
     <div>
       <div className="top-div">
@@ -111,7 +114,7 @@ function Profile() {
           <CreateTodoForm user={userDetails} fetchData={fetchUserData} />
         </div>
         <div className="top-right">
-          <select className="filter-dropdown" onChange={(e) => handleFilterChange(e)}>
+          <select className="filter-dropdown" onChange={handleFilterChange}>
             <option value="All" default>All</option>
             <option value="Todo">To Do</option>
             <option value="InProgress">In Progress</option>
