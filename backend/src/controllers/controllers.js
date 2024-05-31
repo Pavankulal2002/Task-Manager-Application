@@ -149,24 +149,6 @@ async function patchTasks(request, response){
     }
 }
 
-// Handling PUT request
-async function putTasks(request, response){
-    console.log("##### HTTP REQUEST: PUT #####");
-    const userEmail = request.params.Email;
-    if(userEmail==null){
-        console.log("User not logged in");
-        return response.status(401).json({
-            status: "Failed",
-            message: "User not logged in"
-        })
-    }
-    const id = request.query.id;
-    const task = request.body;
-
-    console.log(id);
-    console.log(task);
-}
-
 // Handling DELETE request
 async function deleteTasks(request, response){
     console.log("##### HTTP REQUEST: DELETE #####");
@@ -216,62 +198,11 @@ async function getCSRFToken(request, response){
     }
 }
 
-// Creates a session after successful login
-async function userLogin(request, response){
-    const { Email } = request.params;
-    console.log(Email);
-    try{
-        request.session.userEmail = Email;
-        console.log("Login success");
-        return response.status(200).json({
-            status: "Success",
-            message: "Login attempt successful"
-        })
-    }catch(err){
-        console.log("Login failed");
-        return response.status(500).json({
-            status: "Failed",
-            message: "Login attempt failed"
-        })
-    }
-}
-
-// Destroys the session after logout
-async function userLogout(request, response){
-    const userEmail = getSession(request);
-    console.log(userEmail);
-    if(userEmail==null){
-        console.log("User not logged in");
-        return response.status(401).json({
-            status: "Failed",
-            message: "User not logged in"
-        })
-    }
-    request.session.destroy((err) => {
-        if(err) {
-            console.log(err);
-            return response.status(500).json({
-                status: "Failed",
-                message: "Logout attempt failed"
-            })
-        } else {
-            console.log("Logout successful");
-            return response.status(200).json({
-                status: "Success",
-                message: "Logout successful"
-            })
-        }
-    });
-}
-
 // Exporting the functions 
 module.exports = {
     getTasks,
     postTasks,
     patchTasks,
-    putTasks,
     deleteTasks,
-    getCSRFToken,
-    userLogin,
-    userLogout
+    getCSRFToken
 };

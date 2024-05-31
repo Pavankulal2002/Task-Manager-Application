@@ -1,6 +1,6 @@
 # Task Manager
 
-A simple task manager application built using Node.js and React.js. It uses MongoDB for the database and Redis for caching.
+A simple task manager application built using Node.js and React.js. It uses MongoDB for the database, Redis for caching, and Firebase for user login and authentication.
 
 
 ## Technologies Used
@@ -36,14 +36,14 @@ cd Task-Manager-Application
 npm run install
 ``` 
 
-3. Start the Redis server (after installing Redis):
+3. Start the Redis server on WSL(after installing Redis):
 
 ```bash
 sudo service redis-server start
 ```
 **Note** : Redis server should start at the default port (ie : 6379)
 
-Yoy can ping the server using following command
+You can ping the server using following command
 
 ```bash
 redis-cli ping
