@@ -9,7 +9,7 @@ A simple task manager application built using Node.js and React.js. It uses Mong
 - **React.js**: [Official Documentation](https://reactjs.org/docs/getting-started.html)
 - **MongoDB**: [Official Documentation](https://docs.mongodb.com/)
 - **Redis**: [Official Documentation](https://redis.io/documentation)
-
+- **Firebase**: [Official Documentation](https://firebase.google.com/docs)
 
 ## Prerequisits
 
